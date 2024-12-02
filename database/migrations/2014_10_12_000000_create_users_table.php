@@ -15,8 +15,17 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
+            $table->string('image')->nullable();
             $table->string('password');
+            $table->string('phone');
+            $table->string('address');
+            $table->string('city');
+            $table->string('region');
+            $table->string('contry');
+            $table->string('zip_code');
+            $table->integer('is_active')->default(true);
+            $table->enum('profile', ['Admin', 'Client', 'consultant'])->default('Client');
+            $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

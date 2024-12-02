@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -26,12 +25,16 @@ class User extends Authenticatable implements JWTSubject
     protected $fillable = [
         'name',
         'email',
+        'image',
         'password',
         'phone',
-        'cpf_cnpj',
-        'birth_date',
+        'address',
+        'city',
+        'region',
+        'contry',
+        'zip_code',
         'is_active',
-        'photo'
+        'profile',
     ];
 
     /**
@@ -63,5 +66,4 @@ class User extends Authenticatable implements JWTSubject
     {
         return [];
     }
-
 }

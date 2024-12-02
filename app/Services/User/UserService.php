@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\PasswordRecoveryMail;
 use App\Mail\WelcomeMail;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
@@ -37,7 +38,13 @@ class UserService
 
             if(isset($search_term)){
                 $users->where('name', 'LIKE', "%{$search_term}%")
-                    ->orWhere('email', 'LIKE', "%{$search_term}%");
+                    ->orWhere('email', 'LIKE', "%{$search_term}%")
+                    ->orWhere('phone', 'LIKE', "%{$search_term}%")
+                    ->orWhere('address', 'LIKE', "%{$search_term}%")
+                    ->orWhere('city', 'LIKE', "%{$search_term}%")
+                    ->orWhere('region', 'LIKE', "%{$search_term}%")
+                    ->orWhere('contry', 'LIKE', "%{$search_term}%")
+                    ->orWhere('zip_code', 'LIKE', "%{$search_term}%");
             }
 
             $users = $users->paginate($perPage);
@@ -51,7 +58,7 @@ class UserService
     public function getUser()
     {
         try {
-            $user = auth()->user();
+            $user = Auth::user();
     
             if ($user) {
                 // Cast para o tipo correto
@@ -91,38 +98,41 @@ class UserService
     public function create($request)
     {
         try {
+            $request['image'] = $request['image'] == 'null' ? null : $request['image'];
+            $request['is_active'] = $request['is_active'] == 'null' ? null : $request['is_active'];
+
             $rules = [
-                'name' => 'required|string|max:255',
-                'email' => 'required|string|email|max:255|unique:users',
-                'password' => 'nullable|string|min:8',
-                'phone' => 'nullable|string',
-                'cpf_cnpj' => 'nullable|string',
-                'birth_date' => 'nullable|date',
-                'is_active' => 'nullable|boolean|default:true',
-                'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // validação para a foto
+                'name' => ['required', 'string', 'max:255'],
+                'email' => ['required', 'string', 'max:255'],
+                'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
+                'password' => ['required', 'string', 'max:255'],
+                'phone' => ['required', 'string', 'max:255'],
+                'address' => ['required', 'string', 'max:255'],
+                'city' => ['required', 'string', 'max:255'],
+                'region' => ['required', 'string', 'max:255'],
+                'contry' => ['required', 'string', 'max:255'],
+                'zip_code' => ['required', 'string', 'max:255'],
+                'is_active' => ['nullable', 'boolean'],
+                'profile' => ['required', 'string', 'in:Admin,Client,consultant'],                
             ];
     
-            $password = str_shuffle(Str::upper(Str::random(1)) . rand(0, 9) . Str::random(1, '?!@#$%^&*') . Str::random(5));
-    
             $requestData = $request->all();
-            $requestData['password'] = Hash::make($password);
+            $requestData['password'] = Hash::make($request->password);
     
             $validator = Validator::make($requestData, $rules);
     
             if ($validator->fails()) {
-                return ['status' => false, 'error' => $validator->errors(), 'statusCode' => 400];
+                throw new Exception($validator->errors(), 400);
             }
     
-            if ($request->hasFile('photo')) {
-                $path = $request->file('photo')->store('photos', 'public');
+            if ($request->hasFile('image')) {
+                $path = $request->file('image')->store('user_images', 'public');
                 $fullPath = asset('storage/' . $path);
-                $requestData['photo'] = $fullPath;
+                $requestData['image'] = $fullPath;
             }
     
             $user = User::create($requestData);
-    
-            Mail::to($user->email)->send(new WelcomeMail($user->name, $user->email, $password));
-    
+        
             return ['status' => true, 'data' => $user];
         } catch (Exception $error) {
             return ['status' => false, 'error' => $error->getMessage(), 'statusCode' => 400];
@@ -133,16 +143,22 @@ class UserService
     public function update($request, $user_id)
     {
         try {
-            $request['photo'] = $request['photo'] == 'null' ? null : $request['photo'];
+            $request['image'] = $request['image'] == 'null' ? null : $request['image'];
+            $request['is_active'] = $request['is_active'] == 'null' ? null : $request['is_active'];
 
             $rules = [
-                'name' => 'required|string|max:255',
-                'email' => 'required|string|email|max:255',
-                'phone' => 'nullable|string',
-                'cpf_cnpj' => 'nullable|string',
-                'birth_date' => 'nullable|date',
-                'is_active' => 'nullable|boolean|default:true',
-                'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'name' => ['required', 'string', 'max:255'],
+                'email' => ['required', 'string', 'max:255'],
+                'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
+                'password' => ['nullable', 'string', 'max:255'],
+                'phone' => ['required', 'string', 'max:255'],
+                'address' => ['required', 'string', 'max:255'],
+                'city' => ['required', 'string', 'max:255'],
+                'region' => ['required', 'string', 'max:255'],
+                'contry' => ['required', 'string', 'max:255'],
+                'zip_code' => ['required', 'string', 'max:255'],
+                'is_active' => ['nullable', 'boolean'],
+                'profile' => ['required', 'string', 'in:Admin,Client,consultant'],                
             ];
 
             $validator = Validator::make($request->all(), $rules);
@@ -155,10 +171,10 @@ class UserService
 
             $requestData = $validator->validated();
 
-            if ($request->hasFile('photo')) {
-                $path = $request->file('photo')->store('photos', 'public');
+            if ($request->hasFile('image')) {
+                $path = $request->file('image')->store('user_images', 'public');
                 $fullPath = asset('storage/' . $path);
-                $requestData['photo'] = $fullPath;
+                $requestData['image'] = $fullPath;
             }
 
             $userToUpdate->update($requestData);
@@ -219,7 +235,9 @@ class UserService
             $code = $request->code;
             $password = $request->password;
 
-            $recovery = PasswordRecovery::orderBy('id', 'desc')->where('code', $code)->first();
+            $recovery = PasswordRecovery::orderBy('id', 'desc')
+                ->where('code', $code)
+                ->first();
 
             if(!$recovery) throw new Exception('Código enviado não é válido.');
 
