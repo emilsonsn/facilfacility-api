@@ -18,7 +18,8 @@ class FacilityImage extends Model
 
     public $fillable = [
         'filename',
-        'path'
+        'path',
+        'facility_id'
     ];
 
     public function facility(){

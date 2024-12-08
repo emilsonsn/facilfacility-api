@@ -55,7 +55,7 @@ class ComponentService
     {
         try {
             $rules = [
-                'facility_id' => 'nullable|integer',
+                'facility_id' => 'required|integer',
                 'group' => 'nullable|string|max:255',
                 'uniformat' => 'nullable|string|max:255',
                 'name' => 'nullable|string|max:255',
@@ -96,7 +96,7 @@ class ComponentService
     {
         try {
             $rules = [
-                'facility_id' => 'nullable|integer',
+                'facility_id' => 'required|integer',
                 'group' => 'nullable|string|max:255',
                 'uniformat' => 'nullable|string|max:255',
                 'name' => 'nullable|string|max:255',
