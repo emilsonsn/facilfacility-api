@@ -1,8 +1,11 @@
 <?php
 
+use App\Http\Controllers\ActionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\ComponentController;
+use App\Http\Controllers\FacilityController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\AdminMiddleware;
 
@@ -44,10 +47,34 @@ Route::middleware('jwt')->group(function(){
         Route::post('block/{id}', [UserController::class, 'userBlock']);
     });
 
-    Route::prefix('client')->group(function(){
-        Route::get('search', [ClientController::class, 'search']);
-        Route::post('create', [ClientController::class, 'create']);
-        Route::patch('{id}', [ClientController::class, 'update']);
-        Route::delete('{id}', [ClientController::class, 'delete']);
+    Route::prefix('facility')->group(function(){
+        Route::get('search', [FacilityController::class, 'search']);
+        Route::get('{id}', [FacilityController::class, 'getById']);
+        Route::post('create', [FacilityController::class, 'create']);
+        Route::patch('{id}', [FacilityController::class, 'update']);
+        Route::delete('{id}', [FacilityController::class, 'delete']);
     });
+
+    Route::prefix('component')->group(function(){
+        Route::get('search', [ComponentController::class, 'search']);
+        Route::get('{id}', [ComponentController::class, 'getById']);
+        Route::post('create', [ComponentController::class, 'create']);
+        Route::patch('{id}', [ComponentController::class, 'update']);
+        Route::delete('{id}', [ComponentController::class, 'delete']);
+    });
+
+    Route::prefix('action')->group(function(){
+        Route::get('search', [ActionController::class, 'search']);
+        Route::get('{id}', [ActionController::class, 'getById']);
+        Route::post('create', [ActionController::class, 'create']);
+        Route::patch('{id}', [ActionController::class, 'update']);
+        Route::delete('{id}', [ActionController::class, 'delete']);
+    });
+    
+    // Route::prefix('client')->group(function(){
+    //     Route::get('search', [ClientController::class, 'search']);
+    //     Route::post('create', [ClientController::class, 'create']);
+    //     Route::patch('{id}', [ClientController::class, 'update']);
+    //     Route::delete('{id}', [ClientController::class, 'delete']);
+    // });
 });
