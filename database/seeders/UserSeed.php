@@ -19,13 +19,16 @@ class UserSeed extends Seeder
         ],
         [
             'name' => 'Admin',
-            'email' => 'admin@admin',
+            'image' => null,
             'password' => Hash::make('admin'),
             'phone' => '83991236636',
-            'cpf_cnpj' => '13754674412',
-            'birth_date' => '2001-12-18',
+            'address' => 'Rua Niza Siqueira de Melo',
+            'city' => 'Santa Rita',
+            'region' => 'Estados',
+            'contry' => 'País',
+            'zip_code' => '58301275',
             'is_active' => true,
-            'is_admin' => true,
+            'profile' => 'Admin',
         ]);
     }
 }
