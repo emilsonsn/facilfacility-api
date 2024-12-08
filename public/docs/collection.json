@@ -10,7 +10,7 @@
     ],
     "info": {
         "name": "SistemaVendas",
-        "_postman_id": "4a9e2f74-98f9-4027-980f-e5cedeb96b69",
+        "_postman_id": "220c2580-8775-42ba-abec-60ad8538b5d2",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -467,7 +467,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "vitae",
+                                    "value": "aut",
                                     "description": "The ID of the user."
                                 }
                             ]
@@ -503,7 +503,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "quidem",
+                                    "value": "quas",
                                     "description": "The ID of the block."
                                 }
                             ]
@@ -528,13 +528,13 @@
                     "response": []
                 },
                 {
-                    "name": "GET api\/client\/search",
+                    "name": "GET api\/facility\/search",
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/client\/search",
+                            "path": "api\/facility\/search",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/client\/search"
+                            "raw": "{{baseUrl}}\/api\/facility\/search"
                         },
                         "method": "GET",
                         "header": [
@@ -588,13 +588,81 @@
                     ]
                 },
                 {
-                    "name": "POST api\/client\/create",
+                    "name": "GET api\/facility\/{id}",
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/client\/create",
+                            "path": "api\/facility\/:id",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/client\/create"
+                            "raw": "{{baseUrl}}\/api\/facility\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "adipisci",
+                                    "description": "The ID of the facility."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "www-authenticate",
+                                    "value": "jwt-auth"
+                                },
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "53"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 401,
+                            "body": "{\n    \"message\": \"Token not provided\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "POST api\/facility\/create",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/facility\/create",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/facility\/create"
                         },
                         "method": "POST",
                         "header": [
@@ -616,19 +684,19 @@
                     "response": []
                 },
                 {
-                    "name": "PATCH api\/client\/{id}",
+                    "name": "PATCH api\/facility\/{id}",
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/client\/:id",
+                            "path": "api\/facility\/:id",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/client\/:id",
+                            "raw": "{{baseUrl}}\/api\/facility\/:id",
                             "variable": [
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "veritatis",
-                                    "description": "The ID of the client."
+                                    "value": "labore",
+                                    "description": "The ID of the facility."
                                 }
                             ]
                         },
@@ -652,19 +720,475 @@
                     "response": []
                 },
                 {
-                    "name": "DELETE api\/client\/{id}",
+                    "name": "DELETE api\/facility\/{id}",
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/client\/:id",
+                            "path": "api\/facility\/:id",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/client\/:id",
+                            "raw": "{{baseUrl}}\/api\/facility\/:id",
                             "variable": [
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "blanditiis",
-                                    "description": "The ID of the client."
+                                    "value": "reiciendis",
+                                    "description": "The ID of the facility."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "GET api\/component\/search",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/component\/search",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/component\/search"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "www-authenticate",
+                                    "value": "jwt-auth"
+                                },
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "52"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 401,
+                            "body": "{\n    \"message\": \"Token not provided\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "GET api\/component\/{id}",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/component\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/component\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "dolores",
+                                    "description": "The ID of the component."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "www-authenticate",
+                                    "value": "jwt-auth"
+                                },
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "51"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 401,
+                            "body": "{\n    \"message\": \"Token not provided\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "POST api\/component\/create",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/component\/create",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/component\/create"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "PATCH api\/component\/{id}",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/component\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/component\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "accusantium",
+                                    "description": "The ID of the component."
+                                }
+                            ]
+                        },
+                        "method": "PATCH",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "DELETE api\/component\/{id}",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/component\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/component\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "quam",
+                                    "description": "The ID of the component."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "GET api\/action\/search",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/action\/search",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/action\/search"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "www-authenticate",
+                                    "value": "jwt-auth"
+                                },
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "50"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 401,
+                            "body": "{\n    \"message\": \"Token not provided\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "GET api\/action\/{id}",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/action\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/action\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "sint",
+                                    "description": "The ID of the action."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [
+                                {
+                                    "key": "www-authenticate",
+                                    "value": "jwt-auth"
+                                },
+                                {
+                                    "key": "cache-control",
+                                    "value": "no-cache, private"
+                                },
+                                {
+                                    "key": "content-type",
+                                    "value": "application\/json"
+                                },
+                                {
+                                    "key": "x-ratelimit-limit",
+                                    "value": "60"
+                                },
+                                {
+                                    "key": "x-ratelimit-remaining",
+                                    "value": "49"
+                                },
+                                {
+                                    "key": "access-control-allow-origin",
+                                    "value": "*"
+                                }
+                            ],
+                            "code": 401,
+                            "body": "{\n    \"message\": \"Token not provided\"\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "POST api\/action\/create",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/action\/create",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/action\/create"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "PATCH api\/action\/{id}",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/action\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/action\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "aut",
+                                    "description": "The ID of the action."
+                                }
+                            ]
+                        },
+                        "method": "PATCH",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "DELETE api\/action\/{id}",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/action\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/action\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "atque",
+                                    "description": "The ID of the action."
                                 }
                             ]
                         },

@@ -182,7 +182,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the user.'
-        example: vitae
+        example: aut
         required: true
         schema:
           type: string
@@ -201,14 +201,14 @@ paths:
         in: path
         name: id
         description: 'The ID of the block.'
-        example: quidem
+        example: quas
         required: true
         schema:
           type: string
-  /api/client/search:
+  /api/facility/search:
     get:
       summary: ''
-      operationId: getApiClientSearch
+      operationId: getApiFacilitySearch
       description: ''
       parameters: []
       responses:
@@ -227,20 +227,31 @@ paths:
       tags:
         - Endpoints
       security: []
-  /api/client/create:
-    post:
+  '/api/facility/{id}':
+    get:
       summary: ''
-      operationId: postApiClientCreate
+      operationId: getApiFacilityId
       description: ''
       parameters: []
-      responses: {  }
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Token not provided'
+                properties:
+                  message:
+                    type: string
+                    example: 'Token not provided'
       tags:
         - Endpoints
       security: []
-  '/api/client/{id}':
     patch:
       summary: ''
-      operationId: patchApiClientId
+      operationId: patchApiFacilityId
       description: ''
       parameters: []
       responses: {  }
@@ -249,7 +260,7 @@ paths:
       security: []
     delete:
       summary: ''
-      operationId: deleteApiClientId
+      operationId: deleteApiFacilityId
       description: ''
       parameters: []
       responses: {  }
@@ -260,11 +271,183 @@ paths:
       -
         in: path
         name: id
-        description: 'The ID of the client.'
-        example: veritatis
+        description: 'The ID of the facility.'
+        example: adipisci
         required: true
         schema:
           type: string
+  /api/facility/create:
+    post:
+      summary: ''
+      operationId: postApiFacilityCreate
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  /api/component/search:
+    get:
+      summary: ''
+      operationId: getApiComponentSearch
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Token not provided'
+                properties:
+                  message:
+                    type: string
+                    example: 'Token not provided'
+      tags:
+        - Endpoints
+      security: []
+  '/api/component/{id}':
+    get:
+      summary: ''
+      operationId: getApiComponentId
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Token not provided'
+                properties:
+                  message:
+                    type: string
+                    example: 'Token not provided'
+      tags:
+        - Endpoints
+      security: []
+    patch:
+      summary: ''
+      operationId: patchApiComponentId
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    delete:
+      summary: ''
+      operationId: deleteApiComponentId
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the component.'
+        example: dolores
+        required: true
+        schema:
+          type: string
+  /api/component/create:
+    post:
+      summary: ''
+      operationId: postApiComponentCreate
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+  /api/action/search:
+    get:
+      summary: ''
+      operationId: getApiActionSearch
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Token not provided'
+                properties:
+                  message:
+                    type: string
+                    example: 'Token not provided'
+      tags:
+        - Endpoints
+      security: []
+  '/api/action/{id}':
+    get:
+      summary: ''
+      operationId: getApiActionId
+      description: ''
+      parameters: []
+      responses:
+        401:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Token not provided'
+                properties:
+                  message:
+                    type: string
+                    example: 'Token not provided'
+      tags:
+        - Endpoints
+      security: []
+    patch:
+      summary: ''
+      operationId: patchApiActionId
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    delete:
+      summary: ''
+      operationId: deleteApiActionId
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the action.'
+        example: sint
+        required: true
+        schema:
+          type: string
+  /api/action/create:
+    post:
+      summary: ''
+      operationId: postApiActionCreate
+      description: ''
+      parameters: []
+      responses: {  }
+      tags:
+        - Endpoints
+      security: []
 tags:
   -
     name: Endpoints
