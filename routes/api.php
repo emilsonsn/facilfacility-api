@@ -53,6 +53,7 @@ Route::middleware('jwt')->group(function(){
         Route::post('create', [FacilityController::class, 'create']);
         Route::patch('{id}', [FacilityController::class, 'update']);
         Route::delete('{id}', [FacilityController::class, 'delete']);
+        Route::delete('image/{id}', [FacilityController::class, 'deleteImage']);
     });
 
     Route::prefix('component')->group(function(){

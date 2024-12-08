@@ -164,4 +164,19 @@ class FacilityService
             return ['status' => false, 'error' => $error->getMessage(), 'statusCode' => 400];
         }
     }
+
+    public function deleteImage($id){
+        try{
+            $facilityImage = FacilityImage::find($id);
+
+            if(!$facilityImage) throw new Exception('Image not found');
+
+            $facilityImageFilename = $facilityImage->filename;
+            $facilityImage->delete();
+
+            return ['status' => true, 'data' => $facilityImageFilename];
+        }catch(Exception $error) {
+            return ['status' => false, 'error' => $error->getMessage(), 'statusCode' => 400];
+        }
+    }
 }

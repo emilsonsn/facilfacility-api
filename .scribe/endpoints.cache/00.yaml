@@ -395,14 +395,14 @@ endpoints:
         name: id
         description: 'The ID of the user.'
         required: true
-        example: aut
+        example: incidunt
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanUrlParameters:
-      id: aut
+      id: incidunt
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -436,14 +436,14 @@ endpoints:
         name: id
         description: 'The ID of the block.'
         required: true
-        example: quas
+        example: laboriosam
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanUrlParameters:
-      id: quas
+      id: laboriosam
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -522,14 +522,14 @@ endpoints:
         name: id
         description: 'The ID of the facility.'
         required: true
-        example: adipisci
+        example: et
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanUrlParameters:
-      id: adipisci
+      id: et
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -608,14 +608,14 @@ endpoints:
         name: id
         description: 'The ID of the facility.'
         required: true
-        example: labore
+        example: ea
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanUrlParameters:
-      id: labore
+      id: ea
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -649,14 +649,55 @@ endpoints:
         name: id
         description: 'The ID of the facility.'
         required: true
-        example: reiciendis
+        example: voluptatem
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanUrlParameters:
-      id: reiciendis
+      id: voluptatem
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - DELETE
+    uri: 'api/facility/image/{id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the image.'
+        required: true
+        example: eveniet
+        type: string
+        enumValues: []
+        exampleWasSpecified: false
+        nullable: false
+        custom: []
+    cleanUrlParameters:
+      id: eveniet
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -735,14 +776,14 @@ endpoints:
         name: id
         description: 'The ID of the component.'
         required: true
-        example: dolores
+        example: soluta
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanUrlParameters:
-      id: dolores
+      id: soluta
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -821,14 +862,14 @@ endpoints:
         name: id
         description: 'The ID of the component.'
         required: true
-        example: accusantium
+        example: vel
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanUrlParameters:
-      id: accusantium
+      id: vel
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -862,14 +903,14 @@ endpoints:
         name: id
         description: 'The ID of the component.'
         required: true
-        example: quam
+        example: rerum
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanUrlParameters:
-      id: quam
+      id: rerum
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -948,14 +989,14 @@ endpoints:
         name: id
         description: 'The ID of the action.'
         required: true
-        example: sint
+        example: quaerat
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanUrlParameters:
-      id: sint
+      id: quaerat
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -1034,14 +1075,14 @@ endpoints:
         name: id
         description: 'The ID of the action.'
         required: true
-        example: aut
+        example: maxime
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanUrlParameters:
-      id: aut
+      id: maxime
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -1075,14 +1116,14 @@ endpoints:
         name: id
         description: 'The ID of the action.'
         required: true
-        example: atque
+        example: quia
         type: string
         enumValues: []
         exampleWasSpecified: false
         nullable: false
         custom: []
     cleanUrlParameters:
-      id: atque
+      id: quia
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []

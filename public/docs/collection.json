@@ -10,7 +10,7 @@
     ],
     "info": {
         "name": "SistemaVendas",
-        "_postman_id": "220c2580-8775-42ba-abec-60ad8538b5d2",
+        "_postman_id": "65b6d039-2333-40da-a7d3-820e1fdc1393",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -467,7 +467,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "aut",
+                                    "value": "incidunt",
                                     "description": "The ID of the user."
                                 }
                             ]
@@ -503,7 +503,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "quas",
+                                    "value": "laboriosam",
                                     "description": "The ID of the block."
                                 }
                             ]
@@ -599,7 +599,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "adipisci",
+                                    "value": "et",
                                     "description": "The ID of the facility."
                                 }
                             ]
@@ -695,7 +695,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "labore",
+                                    "value": "ea",
                                     "description": "The ID of the facility."
                                 }
                             ]
@@ -731,8 +731,44 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "reiciendis",
+                                    "value": "voluptatem",
                                     "description": "The ID of the facility."
+                                }
+                            ]
+                        },
+                        "method": "DELETE",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "DELETE api\/facility\/image\/{id}",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/facility\/image\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/facility\/image\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "eveniet",
+                                    "description": "The ID of the image."
                                 }
                             ]
                         },
@@ -827,7 +863,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "dolores",
+                                    "value": "soluta",
                                     "description": "The ID of the component."
                                 }
                             ]
@@ -923,7 +959,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "accusantium",
+                                    "value": "vel",
                                     "description": "The ID of the component."
                                 }
                             ]
@@ -959,7 +995,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "quam",
+                                    "value": "rerum",
                                     "description": "The ID of the component."
                                 }
                             ]
@@ -1055,7 +1091,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "sint",
+                                    "value": "quaerat",
                                     "description": "The ID of the action."
                                 }
                             ]
@@ -1151,7 +1187,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "aut",
+                                    "value": "maxime",
                                     "description": "The ID of the action."
                                 }
                             ]
@@ -1187,7 +1223,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "atque",
+                                    "value": "quia",
                                     "description": "The ID of the action."
                                 }
                             ]
