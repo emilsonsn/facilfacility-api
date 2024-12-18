@@ -17,7 +17,8 @@ class FacilityService
             $search_term = $request->search_term ?? null;
             $user_id = $request->user_id ?? null;
 
-            $facilities = Facility::orderBy('id', 'desc');
+            $facilities = Facility::orderBy('id', 'desc')
+                ->with('images');
 
             if(isset($search_term)){
                 $facilities->where('name', 'LIKE', "%{$search_term}%")
@@ -40,7 +41,7 @@ class FacilityService
     public function getById($id)
     {
         try {
-            $facility = Facility::find($id);
+            $facility = Facility::with('images')->find($id);
 
             if(!isset($facility)){
                 throw new Exception('Facility not found', 400);
@@ -81,18 +82,7 @@ class FacilityService
                 throw new Exception($validator->errors(), 400);
             }
 
-            $facility = Facility::create($validator->validated());
-
-            if ($request->filled('images')) {
-                foreach ($request->images as $image) {
-                    $path = $image->store('public/images');
-                    FacilityImage::create([
-                        'filename' => $image->getClientOriginalName(),
-                        'path' => str_replace('public/', 'storage/', $path),
-                        'facility_id' => $facility->id
-                    ]);
-                }
-            }            
+            $facility = Facility::create($validator->validated());          
 
             return ['status' => true, 'data' => $facility];
         } catch (Exception $error) {
@@ -133,17 +123,6 @@ class FacilityService
 
             $facilityToUpdate->update($validator->validated());
 
-            if ($request->filled('images')) {
-                foreach ($request->images as $image) {
-                    $path = $image->store('public/images');
-                    FacilityImage::create([
-                        'filename' => $image->getClientOriginalName(),
-                        'path' => str_replace('public/', 'storage/', $path),
-                        'facility_id' => $facilityToUpdate->id,
-                    ]);
-                }
-            }  
-
             return ['status' => true, 'data' => $facilityToUpdate];
         } catch (Exception $error) {
             return ['status' => false, 'error' => $error->getMessage(), 'statusCode' => 400];
@@ -162,6 +141,37 @@ class FacilityService
             return ['status' => true, 'data' => $facilityName];
         }catch(Exception $error) {
             return ['status' => false, 'error' => $error->getMessage(), 'statusCode' => 400];
+        }
+    }
+
+    public function uploadImage($request, $facility_id){
+        try{
+            $facility = Facility::find($facility_id);
+    
+            if(!isset($facility)) throw new Exception("Facility not found");
+    
+            if (!$request->hasFile('image')) throw new Exception("Image not found");
+
+            $image = $request->file('image');
+            $path = $image->store('public/images');
+
+            $facilityImage = FacilityImage::create([
+                'filename' => $image->getClientOriginalName(),
+                'path' => str_replace('public/', '', $path),
+                'facility_id' => $facility->id
+            ]);            
+
+            return [
+                'status' => true,
+                'data' => $facilityImage
+            ];
+            
+        } catch(Exception $error){
+            return [
+                'status' => false,
+                'error' => $error->getMessage(),
+               'statusCode' => 400
+            ];
         }
     }
 

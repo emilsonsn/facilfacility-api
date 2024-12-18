@@ -46,6 +46,13 @@ class FacilityController extends Controller
         return $this->response($result);
     }
 
+    public function uploadImage(Request $request, $id){
+        $result = $this->facilityService->uploadImage($request, $id);
+
+        if($result['status']) $result['message'] = "Image added successfully";
+        return $this->response($result);
+    }
+
     public function deleteImage($id){
         $result = $this->facilityService->deleteImage($id);
 

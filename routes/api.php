@@ -51,11 +51,12 @@ Route::middleware('jwt')->group(function(){
         Route::get('search', [FacilityController::class, 'search']);
         Route::get('{id}', [FacilityController::class, 'getById']);
         Route::post('create', [FacilityController::class, 'create']);
+        Route::post('upload-image/{id}', [FacilityController::class, 'uploadImage']);
         Route::patch('{id}', [FacilityController::class, 'update']);
         Route::delete('{id}', [FacilityController::class, 'delete']);
         Route::delete('image/{id}', [FacilityController::class, 'deleteImage']);
     });
-
+    
     Route::prefix('component')->group(function(){
         Route::get('search', [ComponentController::class, 'search']);
         Route::get('{id}', [ComponentController::class, 'getById']);

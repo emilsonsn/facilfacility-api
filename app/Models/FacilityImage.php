@@ -22,6 +22,10 @@ class FacilityImage extends Model
         'facility_id'
     ];
 
+    public function getPathAttribute($attribute){
+        return $attribute ? asset('storage/' . $attribute) : null;
+    }
+
     public function facility(){
         return $this->belongsTo(Facility::class);
     }
