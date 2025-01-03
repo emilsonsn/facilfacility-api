@@ -31,6 +31,10 @@ class Action extends Model
         'image',
     ];
 
+    public function getImageAttribute($value){
+        return $value ? asset($value) : null;
+    }
+
     public function component(){
         return $this->belongsTo(Component::class);
     } 
