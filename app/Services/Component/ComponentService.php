@@ -68,10 +68,14 @@ class ComponentService
                 'coast' => 'nullable|string|max:255',
                 'currency' => 'nullable|string|max:255',
                 'description' => 'nullable|string|max:255',
+                'unit_cost' => 'nullable|string',
+                'unit_currency' => 'nullable|string',
                 'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             ];
 
-            $validator = Validator::make($request->all(), $rules);
+            $data = $request->all();
+
+            $validator = Validator::make($data, $rules);
 
             if ($validator->fails()) {
                 throw new Exception($validator->errors(), 400);
@@ -96,7 +100,7 @@ class ComponentService
     {
         try {
             $rules = [
-                'facility_id' => 'required|integer',
+                'facility_id' => 'nullable|integer',
                 'group' => 'nullable|string|max:255',
                 'uniformat' => 'nullable|string|max:255',
                 'name' => 'nullable|string|max:255',
@@ -109,6 +113,8 @@ class ComponentService
                 'coast' => 'nullable|string|max:255',
                 'currency' => 'nullable|string|max:255',
                 'description' => 'nullable|string|max:255',
+                'unit_cost' => 'nullable|string',
+                'unit_currency' => 'nullable|string',
                 'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             ];
 

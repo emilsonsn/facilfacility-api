@@ -31,7 +31,13 @@ class Component extends Model
         'currency',
         'description',
         'image',
+        'unit_cost',
+        'unit_currency',
     ];
+
+    public function getImageAttribute($value){
+        return $value ? asset($value) : null;
+    }
 
     public function facility(){
         return $this->belongsTo(Facility::class);
