@@ -53,8 +53,8 @@ Route::middleware('jwt')->group(function(){
         Route::post('create', [FacilityController::class, 'create']);
         Route::post('upload-image/{id}', [FacilityController::class, 'uploadImage']);
         Route::patch('{id}', [FacilityController::class, 'update']);
-        Route::delete('{id}', [FacilityController::class, 'delete']);
         Route::delete('image/{id}', [FacilityController::class, 'deleteImage']);
+        Route::delete('{id}', [FacilityController::class, 'delete']);
     });
     
     Route::prefix('component')->group(function(){
@@ -62,6 +62,7 @@ Route::middleware('jwt')->group(function(){
         Route::get('{id}', [ComponentController::class, 'getById']);
         Route::post('create', [ComponentController::class, 'create']);
         Route::patch('{id}', [ComponentController::class, 'update']);
+        Route::delete('image/{id}', [ComponentController::class, 'deleteImage']);
         Route::delete('{id}', [ComponentController::class, 'delete']);
     });
 
@@ -70,6 +71,7 @@ Route::middleware('jwt')->group(function(){
         Route::get('{id}', [ActionController::class, 'getById']);
         Route::post('create', [ActionController::class, 'create']);
         Route::patch('{id}', [ActionController::class, 'update']);
+        Route::delete('image/{id}', [ActionController::class, 'deleteImage']);
         Route::delete('{id}', [ActionController::class, 'delete']);
     });
     

@@ -164,4 +164,24 @@ class ActionService
             return ['status' => false, 'error' => $error->getMessage(), 'statusCode' => 400];
         }
     }
+
+    public function deleteImage($id){
+        try{
+            $action = Action::find($id);
+    
+            if(!$action) throw new Exception('Action not found');
+    
+            $filePath = explode('storage/', $action->image)[1];
+                                
+            if ($filePath && Storage::disk('public')->exists($filePath)) {
+                Storage::disk('public')->delete($filePath);
+            }
+
+            $action->image = null;
+            $action->save();
+            return ['status' => true, 'data' => $action];
+        }catch(Exception $error) {
+            return ['status' => false, 'error' => $error->getMessage(), 'statusCode' => 400];
+        }
+    }
 }
