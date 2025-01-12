@@ -5,6 +5,7 @@ namespace App\Services\Facility;
 use App\Models\Facility;
 use App\Models\FacilityImage;
 use Exception;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class FacilityService
@@ -178,15 +179,23 @@ class FacilityService
     public function deleteImage($id){
         try{
             $facilityImage = FacilityImage::find($id);
-
+    
             if(!$facilityImage) throw new Exception('Image not found');
-
+    
             $facilityImageFilename = $facilityImage->filename;
+                
+            $filePath = explode('storage/', $facilityImage->path)[1];
+                
+            if ($filePath && Storage::disk('public')->exists($filePath)) {
+                Storage::disk('public')->delete($filePath);
+            }
+        
             $facilityImage->delete();
-
+    
             return ['status' => true, 'data' => $facilityImageFilename];
         }catch(Exception $error) {
             return ['status' => false, 'error' => $error->getMessage(), 'statusCode' => 400];
         }
     }
+
 }
