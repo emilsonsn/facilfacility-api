@@ -162,4 +162,25 @@ class ComponentService
             return ['status' => false, 'error' => $error->getMessage(), 'statusCode' => 400];
         }
     }
+
+    public function deleteImage($id){
+        try{
+            $component = Component::find($id);
+
+            if(!$component) throw new Exception('Component not found');
+
+            $filePath = explode('storage/', $component->image)[1];
+                
+            if ($filePath && Storage::disk('public')->exists($filePath)) {
+                Storage::disk('public')->delete($filePath);
+            }
+        
+            $component->image = null;            
+            $component->save();
+
+            return ['status' => true, 'data' => $component];
+        }catch(Exception $error) {
+            return ['status' => false, 'error' => $error->getMessage(), 'statusCode' => 400];
+        }
+    }
 }
