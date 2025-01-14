@@ -78,7 +78,7 @@ class ActionService
                 'coast' => 'nullable|string|max:255',
                 'curracy' => 'nullable|string|max:255',
                 'description' => 'nullable|string',
-                'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
             ];
 
             $validator = Validator::make($request->all(), $rules);
@@ -117,7 +117,7 @@ class ActionService
                 'coast' => 'nullable|string|max:255',
                 'curracy' => 'nullable|string|max:255',
                 'description' => 'nullable|string',
-                'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
             ];
 
             $validator = Validator::make($request->all(), $rules);

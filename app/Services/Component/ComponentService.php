@@ -70,7 +70,7 @@ class ComponentService
                 'description' => 'nullable|string|max:255',
                 'unit_cost' => 'nullable|string',
                 'unit_currency' => 'nullable|string',
-                'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
             ];
 
             $data = $request->all();
@@ -115,7 +115,7 @@ class ComponentService
                 'description' => 'nullable|string|max:255',
                 'unit_cost' => 'nullable|string',
                 'unit_currency' => 'nullable|string',
-                'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+                'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:10240',
             ];
 
             $validator = Validator::make($request->all(), $rules);

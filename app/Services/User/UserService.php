@@ -104,7 +104,7 @@ class UserService
             $rules = [
                 'name' => ['required', 'string', 'max:255'],
                 'email' => ['required', 'string', 'max:255'],
-                'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
+                'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:10240'],
                 'password' => ['required', 'string', 'max:255'],
                 'phone' => ['required', 'string', 'max:255'],
                 'address' => ['required', 'string', 'max:255'],
@@ -149,7 +149,7 @@ class UserService
             $rules = [
                 'name' => ['required', 'string', 'max:255'],
                 'email' => ['required', 'string', 'max:255'],
-                'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:2048'],
+                'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:10240'],
                 'password' => ['nullable', 'string', 'max:255'],
                 'phone' => ['required', 'string', 'max:255'],
                 'address' => ['required', 'string', 'max:255'],
